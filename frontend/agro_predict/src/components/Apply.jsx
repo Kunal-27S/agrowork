@@ -17,14 +17,14 @@ const Apply = () => {
     },
     termsAgreed: false
   });
-
+  
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
-
+    
     if (type === 'file') {
       setFormData(prev => ({
         ...prev,
@@ -65,7 +65,7 @@ const Apply = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+    
     // Simulate API call
     setTimeout(() => {
       console.log('Form submitted:', formData);
@@ -88,7 +88,7 @@ const Apply = () => {
           required
         />
       </div>
-
+      
       <div className="form-group">
         <label htmlFor="aadhaarNumber">Aadhaar Number *</label>
         <input
@@ -102,7 +102,7 @@ const Apply = () => {
           required
         />
       </div>
-
+      
       <div className="form-group">
         <label htmlFor="mobileNumber">Mobile Number *</label>
         <input
@@ -116,7 +116,7 @@ const Apply = () => {
           required
         />
       </div>
-
+      
       <div className="form-group">
         <label htmlFor="email">Email Address</label>
         <input
@@ -127,7 +127,7 @@ const Apply = () => {
           onChange={handleChange}
         />
       </div>
-
+      
       <div className="form-actions">
         <button type="button" className="btn btn--primary" onClick={nextStep}>
           Next
@@ -166,7 +166,7 @@ const Apply = () => {
           <li><strong>Tips:</strong> Ensure your IFSC and account number are correct, names match Aadhaar, and keep photocopies of all documents.</li>
         </ul>
       </div>
-
+      
       <div className="form-group">
         <label>Upload Documents</label>
         <div className="file-upload">
@@ -185,7 +185,7 @@ const Apply = () => {
             </div>
           )}
         </div>
-
+        
         <div className="file-upload">
           <label htmlFor="landRecords">Land Records (Optional)</label>
           <input
@@ -202,7 +202,7 @@ const Apply = () => {
           )}
         </div>
       </div>
-
+      
       <div className="form-actions">
         <button type="button" className="btn btn--outline" onClick={prevStep}>
           Back
@@ -220,7 +220,7 @@ const Apply = () => {
       <p className="form-note">
         Please provide your bank account details for direct benefit transfer.
       </p>
-
+      
       <div className="form-group">
         <label htmlFor="bankName">Bank Name *</label>
         <input
@@ -232,7 +232,7 @@ const Apply = () => {
           required
         />
       </div>
-
+      
       <div className="form-row">
         <div className="form-group">
           <label htmlFor="accountNumber">Account Number *</label>
@@ -245,7 +245,7 @@ const Apply = () => {
             required
           />
         </div>
-
+        
         <div className="form-group">
           <label htmlFor="ifscCode">IFSC Code *</label>
           <input
@@ -258,7 +258,7 @@ const Apply = () => {
           />
         </div>
       </div>
-
+      
       <div className="form-group">
         <label htmlFor="branch">Branch Name *</label>
         <input
@@ -270,7 +270,7 @@ const Apply = () => {
           required
         />
       </div>
-
+      
       <div className="form-group checkbox-group">
         <label className="checkbox-label">
           <input
@@ -283,13 +283,13 @@ const Apply = () => {
           <span>I hereby declare that the information provided is true and correct to the best of my knowledge.</span>
         </label>
       </div>
-
+      
       <div className="form-actions">
         <button type="button" className="btn btn--outline" onClick={prevStep}>
           Back
         </button>
-        <button
-          type="submit"
+        <button 
+          type="submit" 
           className="btn btn--primary"
           disabled={!formData.termsAgreed || isSubmitting}
         >
@@ -306,7 +306,7 @@ const Apply = () => {
       <p>Your application has been received and is being processed.</p>
       <p><strong>Application ID:</strong> {Math.random().toString(36).substr(2, 10).toUpperCase()}</p>
       <p>You will receive an SMS and email with further instructions.</p>
-      <button
+      <button 
         className="btn btn--primary"
         onClick={() => {
           setCurrentStep(1);
@@ -352,13 +352,13 @@ const Apply = () => {
               <span className="step-label">Bank Details</span>
             </div>
           </div>
-
+          
           <form onSubmit={handleSubmit} className="application-form">
             {currentStep === 1 && renderStep1()}
             {currentStep === 2 && renderStep2()}
             {currentStep === 3 && renderStep3()}
           </form>
-
+          
           <div className="help-section">
             <h4>Need Help?</h4>
             <p>Call us at <a href="tel:18001801551">1800-180-1551</a> (Toll Free)</p>

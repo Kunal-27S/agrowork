@@ -46,24 +46,24 @@ const Financial = () => {
     <div className="financial-portal">
       {/* Universal navbar at the very top */}
       <Navbar />
-      <Header
-        activeSection={activeSection}
-        navigateToSection={navigateToSection}
+      <Header 
+        activeSection={activeSection} 
+        navigateToSection={navigateToSection} 
       />
-
+      
       <main className="main-content">
         {activeSection === 'home' && (
           <Hero navigateToSection={navigateToSection} />
         )}
-
+        
         {activeSection === 'schemes' && schemeData && (
           <Schemes schemes={schemeData} />
         )}
-
+        
         {activeSection === 'calculator' && (
           <Calculator />
         )}
-
+        
         {activeSection === 'eligibility' && (
           <Eligibility />
         )}
@@ -137,11 +137,11 @@ const Financial = () => {
             </div>
           </section>
         )}
-
+        
         {/* Success Stories is always visible */}
         <SuccessStories />
       </main>
-
+      
       <Footer />
     </div>
   );
