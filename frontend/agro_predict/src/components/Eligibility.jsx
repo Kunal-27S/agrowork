@@ -14,7 +14,7 @@ const Eligibility = () => {
     isPensioner: 'no',
     paysTax: 'no'
   });
-  
+
   const [results, setResults] = useState(null);
   const { t } = useTranslation();
 
@@ -28,20 +28,20 @@ const Eligibility = () => {
 
   const checkEligibility = (e) => {
     e.preventDefault();
-    
+
     const eligibleSchemes = [];
-    const { 
-      landOwnership, 
-      annualIncome, 
-      familyIncome, 
-      caste, 
-      gender, 
+    const {
+      landOwnership,
+      annualIncome,
+      familyIncome,
+      caste,
+      gender,
       isFarmer,
       hasKcc,
       isPensioner,
       paysTax
     } = formData;
-    
+
     const annualIncomeNum = parseFloat(annualIncome) || 0;
     const familyIncomeNum = parseFloat(familyIncome) || 0;
     const landOwnershipNum = parseFloat(landOwnership) || 0;
@@ -117,6 +117,21 @@ const Eligibility = () => {
       addScheme('RYTHU_BANDHU', 'Small/marginal farmers benefit more from per-acre/state support where applicable.');
     }
 
+    // Soil Health Card (useful for all farmers)
+    if (isFarmerBool) {
+      addScheme('SOIL_HEALTH_CARD', 'All farmers can obtain a Soil Health Card every 2-3 years to guide balanced fertiliser use.');
+    }
+
+    // e-NAM (market linkage)
+    if (isFarmerBool) {
+      addScheme('eNAM', 'Eligible to register on e-NAM for better market access and transparent pricing.');
+    }
+
+    // AIF (Agricultural Infrastructure Fund) – conservative suggestion when farmer has land
+    if (isFarmerBool && hasLand) {
+      addScheme('AIF', 'If planning post-harvest or farm-gate infrastructure, you can explore AIF with 3% interest subvention.');
+    }
+
     setResults({
       eligibleSchemes,
       totalEligible: eligibleSchemes.length,
@@ -153,7 +168,7 @@ const Eligibility = () => {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="annualIncome">{t('financial.eligibility.annual_income_label')}</label>
               <input
@@ -166,7 +181,7 @@ const Eligibility = () => {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="familyIncome">{t('financial.eligibility.family_income_label')}</label>
               <input
@@ -179,7 +194,7 @@ const Eligibility = () => {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <label>{t('financial.eligibility.category_label')}</label>
               <div className="radio-group">
@@ -225,7 +240,7 @@ const Eligibility = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="form-group">
               <label>{t('financial.eligibility.gender_label')}</label>
               <div className="radio-group">
@@ -261,7 +276,7 @@ const Eligibility = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="form-group">
               <label>{t('financial.eligibility.is_farmer_label')}</label>
               <div className="radio-group">
@@ -287,7 +302,7 @@ const Eligibility = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="form-group">
               <label>{t('financial.eligibility.has_kcc_label')}</label>
               <div className="radio-group">
@@ -313,7 +328,7 @@ const Eligibility = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="form-group">
               <label>{t('financial.eligibility.is_pensioner_label')}</label>
               <div className="radio-group">
@@ -339,7 +354,7 @@ const Eligibility = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="form-group">
               <label>{t('financial.eligibility.pays_tax_label')}</label>
               <div className="radio-group">
@@ -365,22 +380,22 @@ const Eligibility = () => {
                 </label>
               </div>
             </div>
-            
+
             <button type="submit" className="btn btn--primary">
               {t('financial.eligibility.submit')}
             </button>
           </form>
-          
+
           {results && (
             <div className="eligibility-results">
               <h3>{t('financial.eligibility.results_title')}</h3>
-              
+
               {results.totalEligible > 0 ? (
                 <>
                   <div className="results-summary">
                     <p dangerouslySetInnerHTML={{ __html: t('financial.eligibility.summary_text', { count: results.totalEligible }) }} />
                   </div>
-                  
+
                   <div className="eligible-schemes">
                     <h4>{t('financial.eligibility.eligible_title')}</h4>
                     <div className="schemes-list">
@@ -393,7 +408,7 @@ const Eligibility = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="next-steps">
                     <h4>{t('financial.eligibility.next_steps_title')}</h4>
                     <ol>

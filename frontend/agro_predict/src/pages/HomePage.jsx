@@ -57,7 +57,7 @@ const HomePage = () => {
             <span>AGROWORK</span>
           </Link>
         </div>
-        
+
         <div className="navbar-links" style={{ display: 'flex', alignItems: 'center' }}>
           <a href="#home" onClick={() => scrollToSection('home')} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 1rem' }}>
             {t('home.nav.home')}
@@ -71,14 +71,14 @@ const HomePage = () => {
           <a href="#contact" onClick={() => scrollToSection('contact')} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 1rem' }}>
             {t('home.nav.contact')}
           </a>
-          
+
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '1.5rem', ml: 2 }}>
             <span style={{ color: 'white' }}>
               {t('home.labels.welcome_user', { name: user?.name || 'Farmer' })}
             </span>
             <LanguageSwitcher />
-            <button 
-              onClick={handleLogout} 
+            <button
+              onClick={handleLogout}
               style={{
                 background: '#e74c3c',
                 color: 'white',
@@ -107,7 +107,7 @@ const HomePage = () => {
             <div className="shape shape-3"></div>
           </div>
         </div>
-        
+
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
@@ -126,7 +126,7 @@ const HomePage = () => {
                 {t('home.hero.watch_demo')}
                 <span
                   className="btn-icon"
-                  
+
                 >
                   ▶
                 </span>
@@ -134,7 +134,7 @@ const HomePage = () => {
 
             </div>
           </div>
-          
+
           <div className="hero-visual">
             <div className="hero-image">
               <div className="floating-card card-1">
@@ -206,10 +206,10 @@ const HomePage = () => {
             <h2 className="section-title">{t('home.features.title')}</h2>
             <p className="section-subtitle">{t('home.features.subtitle')}</p>
           </div>
-          
+
           <div className="features-grid">
-            <div 
-              className="feature-card" 
+            <div
+              className="feature-card"
               onClick={() => navigate('/crop-recommendation')}
               style={{ cursor: 'pointer' }}
             >
@@ -221,9 +221,9 @@ const HomePage = () => {
                 <span className="btn-icon">→</span>
               </div>
             </div>
-            
-            <div 
-              className="feature-card" 
+
+            <div
+              className="feature-card"
               onClick={() => navigate('/soil-analysis')}
               style={{ cursor: 'pointer' }}
             >
@@ -235,7 +235,7 @@ const HomePage = () => {
                 <span className="btn-icon">→</span>
               </div>
             </div>
-            
+
             <div className="feature-card" onClick={() => navigate('/disease-pest-dashboard')}>
               <div className="feature-icon">🔍</div>
               <h3 className="feature-title">{t('home.features.disease_detector.title')}</h3>
@@ -245,8 +245,8 @@ const HomePage = () => {
                 <span className="btn-icon">→</span>
               </button>
             </div>
-          
-            
+
+
             <div className="feature-card" onClick={() => navigate('/environmental-monitoring')}>
               <div className="feature-icon">🌍</div>
               <h3 className="feature-title">{t('home.features.env_monitoring.title')}</h3>
@@ -256,7 +256,7 @@ const HomePage = () => {
                 <span className="btn-icon">→</span>
               </div>
             </div>
-            
+
             <div className="feature-card" onClick={() => navigate('/financial')}>
               <div className="feature-icon">💰</div>
               <h3 className="feature-title">{t('home.features.financial.title')}</h3>
@@ -266,9 +266,9 @@ const HomePage = () => {
                 <span className="btn-icon">→</span>
               </button>
             </div>
-            
-            <div 
-              className="feature-card" 
+
+            <div
+              className="feature-card"
               onClick={() => navigate('/chatbot')}
               style={{ cursor: 'pointer' }}
             >
@@ -280,7 +280,7 @@ const HomePage = () => {
                 <span className="btn-icon">→</span>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
@@ -292,7 +292,7 @@ const HomePage = () => {
             <h2 className="section-title">{t('home.how_it_works.title')}</h2>
             <p className="section-subtitle">{t('home.how_it_works.subtitle')}</p>
           </div>
-          
+
           <div className="steps-container">
             <div className="step">
               <div className="step-number">1</div>
@@ -300,18 +300,18 @@ const HomePage = () => {
               <h3 className="step-title">{t('home.how_it_works.step1_title')}</h3>
               <p className="step-description">{t('home.how_it_works.step1_desc')}</p>
             </div>
-            
+
             <div className="step-connector"></div>
-            
+
             <div className="step">
               <div className="step-number">2</div>
               <div className="step-icon">💬</div>
               <h3 className="step-title">{t('home.how_it_works.step2_title')}</h3>
               <p className="step-description">{t('home.how_it_works.step2_desc')}</p>
             </div>
-            
+
             <div className="step-connector"></div>
-            
+
             <div className="step">
               <div className="step-number">3</div>
               <div className="step-icon">🎯</div>
@@ -329,7 +329,7 @@ const HomePage = () => {
             <h2 className="section-title">{t('home.testimonials.title')}</h2>
             <p className="section-subtitle">{t('home.testimonials.subtitle')}</p>
           </div>
-          
+
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="testimonial-content">
@@ -343,7 +343,7 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>"{t('home.testimonials.t2')}"</p>
@@ -356,7 +356,7 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>"{t('home.testimonials.t3')}"</p>
@@ -392,7 +392,7 @@ const HomePage = () => {
                 <a href="#" className="social-link">💼</a>
               </div>
             </div>
-            
+
             <div className="footer-section">
               <h4>{t('home.footer.quick_links')}</h4>
               <ul className="footer-links">
@@ -404,7 +404,7 @@ const HomePage = () => {
                 <li><a href="/disease-pest-dashboard">Disease & Pest Dashboard</a></li>
               </ul>
             </div>
-            
+
             <div className="footer-section">
               <h4>{t('home.footer.services')}</h4>
               <ul className="footer-links">
@@ -417,7 +417,7 @@ const HomePage = () => {
                 <li><a href="/disease-pest-dashboard">Disease Dashboard</a></li>
               </ul>
             </div>
-            
+
             <div className="footer-section">
               <h4>{t('home.footer.contact_info')}</h4>
               <div className="contact-info">
@@ -427,7 +427,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} AGROWORK. {t('home.footer.copyright')}</p>
           </div>
