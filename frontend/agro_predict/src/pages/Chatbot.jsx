@@ -120,7 +120,7 @@ const Chatbot = () => {
   };
 
   const clearChat = () => {
-    setMessages([{ id: Date.now().toString(), text: 'Welcome to Gemini AI Chatbot! API key is required to chat.', sender: 'ai', timestamp: new Date() }]);
+    setMessages([{ id: Date.now().toString(), text: 'Welcome to AgroWork AI Chatbot!', sender: 'ai', timestamp: new Date() }]);
     setError('');
   };
 
