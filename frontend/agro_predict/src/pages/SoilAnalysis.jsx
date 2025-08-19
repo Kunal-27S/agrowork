@@ -44,7 +44,7 @@ const SoilAnalysis = () => {
     }, 2000);
   };
 
-
+  
 
   // Icon components using SVG instead of react-icons
   const ArrowLeftIcon = () => (
@@ -186,14 +186,14 @@ const SoilAnalysis = () => {
     const table = (rows) => `
       <table style="width:100%; border-collapse:collapse;">
         ${rows
-        .map(
-          ([k, v]) => `
+          .map(
+            ([k, v]) => `
               <tr>
                 <td style="border:1px solid #e5e7eb; padding:6px 8px; font-weight:600; background:#f8fafc;">${k}</td>
                 <td style="border:1px solid #e5e7eb; padding:6px 8px;">${v}</td>
               </tr>`
-        )
-        .join('')}
+          )
+          .join('')}
       </table>`;
 
     const paramsTable = table([
@@ -224,8 +224,8 @@ const SoilAnalysis = () => {
     const recsHtml = `
       <ol style="padding-left:18px; margin:0;">
         ${recs
-        .map(
-          (r) => `
+          .map(
+            (r) => `
               <li style="margin-bottom:8px;">
                 <div><strong>${r.message}</strong></div>
                 <div style="font-size:12px; color:#334155;">${r.details || ''}</div>
@@ -235,8 +235,8 @@ const SoilAnalysis = () => {
                   ${r.timeline ? ` | Timeline: ${r.timeline}` : ''}
                 </div>
               </li>`
-        )
-        .join('')}
+          )
+          .join('')}
       </ol>`;
 
     const cbTable = table([
@@ -292,7 +292,7 @@ const SoilAnalysis = () => {
     }, 300);
   };
 
-
+  
 
   return (
     <div className="soil-analysis-container">
