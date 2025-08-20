@@ -122,7 +122,7 @@ const HomePage = () => {
                 {t('home.hero.get_started')}
                 <span className="btn-icon">→</span>
               </button>
-              <button className="btn-secondary" onClick={() => window.open("https://youtu.be/gpjXTkC_vTY", "_blank")}>
+              <button className="btn-secondary" onClick={() => window.open("https://youtu.be/8nL06C-N0es", "_blank")}>
                 {t('home.hero.watch_demo')}
                 <span
                   className="btn-icon"
