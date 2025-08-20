@@ -26,13 +26,13 @@ const EnvironmentalMonitoring = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
-
+    
     // Basic validation
     if (!formData.location.trim()) {
       setError('Please enter a location');
       return;
     }
-
+    
     const soilMoisture = parseFloat(formData.soilMoisture);
     if (isNaN(soilMoisture) || soilMoisture < 0 || soilMoisture > 100) {
       setError('Please enter a valid soil moisture percentage (0-100)');
@@ -41,47 +41,47 @@ const EnvironmentalMonitoring = () => {
 
     try {
       setIsLoading(true);
-
+      
       // Fetch weather data from OpenWeatherMap
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(formData.location)}&units=metric&appid=1c4d46bf5bfb38c54d22ed487189b9ca`
       );
-
+      
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to fetch weather data');
       }
-
+      
       const weatherData = await response.json();
-
+      
       // Process and store the environmental data
       const newEnvironmentalData = {
-        temperature: {
-          current: Math.round(weatherData.main.temp * 10) / 10,
-          optimal: { min: 20, max: 28 },
-          unit: "°C"
+        temperature: { 
+          current: Math.round(weatherData.main.temp * 10) / 10, 
+          optimal: { min: 20, max: 28 }, 
+          unit: "°C" 
         },
-        humidity: {
-          current: weatherData.main.humidity,
-          optimal: { min: 50, max: 70 },
-          unit: "%"
+        humidity: { 
+          current: weatherData.main.humidity, 
+          optimal: { min: 50, max: 70 }, 
+          unit: "%" 
         },
-        soil_moisture: {
-          current: soilMoisture,
-          optimal: { min: 40, max: 60 },
-          unit: "%"
+        soil_moisture: { 
+          current: soilMoisture, 
+          optimal: { min: 40, max: 60 }, 
+          unit: "%" 
         },
-        cloudy: {
-          current: weatherData.clouds?.all || 0,
-          optimal: { min: 20, max: 40 },
-          unit: "%"
+        cloudy: { 
+          current: weatherData.clouds?.all || 0, 
+          optimal: { min: 20, max: 40 }, 
+          unit: "%" 
         }
       };
-
+      
       setEnvironmentalData(newEnvironmentalData);
       generateRecommendations(newEnvironmentalData);
       setSuccess('Environmental data updated successfully!');
-
+      
     } catch (err) {
       console.error('Error:', err);
       setError(err.message || 'Failed to fetch weather data. Please try again.');
@@ -182,10 +182,10 @@ const EnvironmentalMonitoring = () => {
         <div className="environmental-form-section">
           <div className="card">
             <h2>Check Environmental Conditions</h2>
-
+            
             {error && <div className="alert alert-error">{error}</div>}
             {success && <div className="alert alert-success">{success}</div>}
-
+            
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="location">Location</label>
@@ -198,7 +198,7 @@ const EnvironmentalMonitoring = () => {
                   disabled={isLoading}
                 />
               </div>
-
+              
               <div className="form-group">
                 <label htmlFor="soilMoisture">Soil Moisture (%)</label>
                 <input
@@ -213,9 +213,9 @@ const EnvironmentalMonitoring = () => {
                   disabled={isLoading}
                 />
               </div>
-
-              <button
-                type="submit"
+              
+              <button 
+                type="submit" 
                 className="btn btn-primary"
                 disabled={isLoading}
               >
@@ -229,7 +229,7 @@ const EnvironmentalMonitoring = () => {
           <div className="environmental-results">
             <div className="card">
               <h2>Current Environmental Conditions</h2>
-
+              
               <div className="environmental-metrics">
                 <div className={`metric-card ${getStatusClass(environmentalData.temperature.current, environmentalData.temperature.optimal)}`}>
                   <div className="metric-icon">🌡️</div>
@@ -241,7 +241,7 @@ const EnvironmentalMonitoring = () => {
                   </div>
                   <div className="metric-label">Temperature</div>
                 </div>
-
+                
                 <div className={`metric-card ${getStatusClass(environmentalData.humidity.current, environmentalData.humidity.optimal)}`}>
                   <div className="metric-icon">💧</div>
                   <div className="metric-value">
@@ -252,7 +252,7 @@ const EnvironmentalMonitoring = () => {
                   </div>
                   <div className="metric-label">Humidity</div>
                 </div>
-
+                
                 <div className={`metric-card ${getStatusClass(environmentalData.soil_moisture.current, environmentalData.soil_moisture.optimal)}`}>
                   <div className="metric-icon">🌱</div>
                   <div className="metric-value">
@@ -263,7 +263,7 @@ const EnvironmentalMonitoring = () => {
                   </div>
                   <div className="metric-label">Soil Moisture</div>
                 </div>
-
+                
                 <div className={`metric-card ${getStatusClass(environmentalData.cloudy.current, environmentalData.cloudy.optimal)}`}>
                   <div className="metric-icon">☁️</div>
                   <div className="metric-value">
@@ -276,7 +276,7 @@ const EnvironmentalMonitoring = () => {
                 </div>
               </div>
             </div>
-
+            
             {recommendations.length > 0 && (
               <div className="recommendations">
                 <h3>Recommendations</h3>

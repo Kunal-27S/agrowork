@@ -90,7 +90,6 @@ const RegisterPage = () => {
         {error && <div className="error-alert">{error}</div>}
 
         <form onSubmit={handleSubmit} className="register-form">
-          
           <div className="input-group">
             <label htmlFor="name">Full Name *</label>
             <div className="input-wrapper">

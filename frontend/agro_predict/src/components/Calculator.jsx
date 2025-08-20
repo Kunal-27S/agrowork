@@ -13,7 +13,7 @@ const Calculator = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-
+    
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
@@ -32,16 +32,16 @@ const Calculator = () => {
 
   const calculateBenefits = (e) => {
     e.preventDefault();
-
+    
     const selectedSchemes = Object.keys(formData.selectedSchemes).filter(
       scheme => formData.selectedSchemes[scheme]
     );
-
+    
     if (selectedSchemes.length === 0) {
       alert(t('financial.calculator.alert_select_one'));
       return;
     }
-
+    
     const landHolding = parseFloat(formData.landHolding) || 0;
     const profile = farmerData.farmer_profiles[formData.farmerType] || {};
 
@@ -171,11 +171,11 @@ const Calculator = () => {
           };
       }
     };
-
+    
     const benefits = selectedSchemes.map(getBenefitForScheme).filter(Boolean);
-
+    
     const totalBenefits = benefits.reduce((sum, benefit) => sum + benefit.amount, 0);
-
+    
     setResults({
       benefits,
       total: totalBenefits,
@@ -203,7 +203,7 @@ const Calculator = () => {
                 required
               />
             </div>
-
+            
             <div className="form-group">
               <label>{t('financial.calculator.farmer_type_label')}</label>
               <div className="radio-group">
@@ -269,7 +269,7 @@ const Calculator = () => {
                 </label>
               </div>
             </div>
-
+            
             <div className="form-group">
               <label>{t('financial.calculator.select_schemes')}</label>
               <div className="checkbox-group">
@@ -286,12 +286,12 @@ const Calculator = () => {
                 ))}
               </div>
             </div>
-
+            
             <button type="submit" className="btn btn--primary">
               {t('financial.calculator.submit')}
             </button>
           </form>
-
+          
           {results && (
             <div className="calculator-results">
               <h3>{t('financial.calculator.results_title')}</h3>
@@ -306,18 +306,18 @@ const Calculator = () => {
                     {
                       (
                         results.farmerType === 'small' ? t('financial.calculator.farmer_small') :
-                          results.farmerType === 'medium' ? t('financial.calculator.farmer_medium') :
-                            results.farmerType === 'large' ? t('financial.calculator.farmer_large') :
-                              results.farmerType === 'tribal_small' ? t('financial.calculator.farmer_tribal_small') :
-                                results.farmerType === 'marginal_woman' ? t('financial.calculator.farmer_marginal_woman') :
-                                  results.farmerType === 'tenant_farmer' ? t('financial.calculator.farmer_tenant') :
-                                    results.farmerType
+                        results.farmerType === 'medium' ? t('financial.calculator.farmer_medium') :
+                        results.farmerType === 'large' ? t('financial.calculator.farmer_large') :
+                        results.farmerType === 'tribal_small' ? t('financial.calculator.farmer_tribal_small') :
+                        results.farmerType === 'marginal_woman' ? t('financial.calculator.farmer_marginal_woman') :
+                        results.farmerType === 'tenant_farmer' ? t('financial.calculator.farmer_tenant') :
+                        results.farmerType
                       )
                     }
                   </span>
                 </div>
               </div>
-
+              
               <div className="benefits-list">
                 <h4>{t('financial.calculator.benefits_breakdown')}</h4>
                 <ul>
@@ -337,7 +337,7 @@ const Calculator = () => {
                   ))}
                 </ul>
               </div>
-
+              
               <div className="total-benefits">
                 <span className="total-label">{t('financial.calculator.total_label')}</span>
                 <span className={`total-amount ${results.total >= 0 ? 'positive' : 'negative'}`}>
@@ -349,7 +349,7 @@ const Calculator = () => {
                   })}
                 </span>
               </div>
-
+              
               <div className="results-note">
                 <p>{t('financial.calculator.note')}</p>
               </div>

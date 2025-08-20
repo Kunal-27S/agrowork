@@ -487,30 +487,30 @@ const CropRecommendation = () => {
 
                         {/* Climate Zone Card (only after required details) */}
                         {(Number(formData.nitrogen) > 0 && Number(formData.phosphorus) > 0 && Number(formData.potassium) > 0 &&
-                            Number(formData.temperature) > 0 && Number(formData.rainfall) > 0 && formData.state && formData.season) && (
-                                <div className="climate-zone-card card enhanced-card">
-                                    <div className="card__body">
-                                        <h4>🌍 कृषि जलवायु क्षेत्र | Agro-climatic Zone</h4>
-                                        <div className="climate-zone-content">
-                                            <div className="climate-zone-icon">
-                                                {climateZone === 'Humid' && '🌴'}
-                                                {climateZone === 'Sub-Humid' && '🌳'}
-                                                {climateZone === 'Semi-Arid' && '🌾'}
-                                                {climateZone === 'Arid' && '🏜️'}
-                                                {!climateZone && '🌍'}
-                                            </div>
-                                            <div className="climate-zone-info">
-                                                <h5>{climateZone || 'Zone not determined'}</h5>
-                                                <p>
-                                                    {climateZone
-                                                        ? `आपका क्षेत्र ${climateZone} जलवायु क्षेत्र में वर्गीकृत है।`
-                                                        : 'पूर्ण जानकारी दर्ज करें।'}
-                                                </p>
-                                            </div>
+                          Number(formData.temperature) > 0 && Number(formData.rainfall) > 0 && formData.state && formData.season) && (
+                            <div className="climate-zone-card card enhanced-card">
+                                <div className="card__body">
+                                    <h4>🌍 कृषि जलवायु क्षेत्र | Agro-climatic Zone</h4>
+                                    <div className="climate-zone-content">
+                                        <div className="climate-zone-icon">
+                                            {climateZone === 'Humid' && '🌴'}
+                                            {climateZone === 'Sub-Humid' && '🌳'}
+                                            {climateZone === 'Semi-Arid' && '🌾'}
+                                            {climateZone === 'Arid' && '🏜️'}
+                                            {!climateZone && '🌍'}
+                                        </div>
+                                        <div className="climate-zone-info">
+                                            <h5>{climateZone || 'Zone not determined'}</h5>
+                                            <p>
+                                                {climateZone
+                                                    ? `आपका क्षेत्र ${climateZone} जलवायु क्षेत्र में वर्गीकृत है।`
+                                                    : 'पूर्ण जानकारी दर्ज करें।'}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                            )}
+                            </div>
+                        )}
 
                     </div>
 
@@ -559,7 +559,7 @@ const CropRecommendation = () => {
                                                 <div
                                                     key={rec.crop}
                                                     className={`recommendation-card stagger-item ${rec.score >= 0.8 ? 'high-match' :
-                                                        rec.score >= 0.6 ? 'medium-match' : 'low-match'
+                                                            rec.score >= 0.6 ? 'medium-match' : 'low-match'
                                                         }`}
                                                 >
                                                     <div className="rec-header">
